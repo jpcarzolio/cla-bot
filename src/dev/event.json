@@ -1,3 +1,0 @@
-{
-  "body": "{\n    \"action\": \"opened\",\n    \"pull_request\": {\n      \"url\": \"https://api.github.com/repos/ColinEberhardt/clabot-test/pulls/55\",\n      \"issue_url\": \"https://api.github.com/repos/ColinEberhardt/clabot-test/issues/55\",\n      \"head\": {\n        \"sha\": \"ce0c76c5e258d2c3d5c0e130e7da3e83ab212b24\"\n      }\n    },\n    \"repository\": {\n      \"url\": \"https://api.github.com/repos/ColinEberhardt/clabot-test\"\n    },\n    \"installation\": {\n      \"id\": 32613\n    }\n  }"
-}

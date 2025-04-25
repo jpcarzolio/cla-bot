@@ -1,0 +1,3 @@
+{
+  "body": "{\n  \"action\": \"created\",\n  \"comment\": {\n    \"body\": \"@cla-bot accept\",\n    \"user\": {\n      \"login\": \"sorongo\"\n    }\n  },\n  \"issue\": {\n    \"number\": 1,\n    \"url\": \"https://api.github.com/repos/jpcarzolio/animation-demo/issues/1\",\n    \"pull_request\": {\n      \"url\": \"https://api.github.com/repos/jpcarzolio/animation-demo/pulls/1\"\n    }\n  },\n  \"repository\": {\n    \"url\": \"https://api.github.com/repos/jpcarzolio/animation-demo\",\n    \"name\": \"animation-demo\",\n    \"owner\": {\n      \"login\": \"jpcarzolio\"\n    }\n  },\n  \"installation\": {\n    \"id\": 32613\n  }\n}"
+}

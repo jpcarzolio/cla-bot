@@ -1,14 +1,6 @@
 const handlebars = require("handlebars");
 const requestp = require("./requestAsPromise");
-const gh = require("parse-github-url");
-
-const getOrgConfigUrl = repositoryUrl => {
-  const ghData = gh(repositoryUrl);
-  const ghUrl = `https://${ghData.host}/repos/${
-    ghData.owner
-  }/clabot-config/contents/.clabot`;
-  return ghUrl;
-};
+const { getOrgConfigUrl } = require("./utils");
 
 exports.githubRequest = (opts, token, method = "POST") =>
   requestp(
@@ -18,7 +10,8 @@ exports.githubRequest = (opts, token, method = "POST") =>
         json: true,
         headers: {
           Authorization: `token ${token}`,
-          "User-Agent": "github-cla-bot"
+          "User-Agent": "github-cla-bot",
+          Accept: "application/vnd.github.v3+json"
         },
         method
       },
@@ -70,10 +63,10 @@ exports.setStatus = (webhook, headSha, state, target_url) => ({
   }
 });
 
-exports.addRecheckComment = (issueUrl, recheckComment) => ({
+exports.addComment = (issueUrl, comment) => ({
   url: `${issueUrl}/comments`,
   body: {
-    body: recheckComment
+    body: comment
   }
 });
 
@@ -95,5 +88,20 @@ exports.addCommentUnidentified = (issueUrl, message, unidentifiedUsers) => {
     body: {
       body: template({ unidentifiedUsers })
     }
+  };
+};
+
+exports.updateFile = (url, prevSha, content, message) => {
+  const contentEncoded = Buffer.from(content).toString("base64");
+  const body = {
+    message,
+    content: contentEncoded,
+    sha: prevSha
+  };
+
+  return {
+    url,
+    method: "PUT",
+    body
   };
 };
